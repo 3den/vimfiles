@@ -1,3 +1,6 @@
+" Use Vim settings
+set nocompatible
+
 " Plugins
 call pathogen#infect()
 
@@ -8,20 +11,23 @@ set guioptions-=T
 set showbreak=...
 set wrap linebreak nolist
 set vb t_vb=
+set splitbelow
+set splitright
 
+" Search
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
 
+" Colorshem
 syntax on
-colorschem desert
 set guifont=Menlo:h14
-
+colorschem 3den
 
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
-set autoindent expandtab smarttab
+set autoindent expandtab smarttab smartindent
 
 " Automatic Commands
 if has("autocmd")
@@ -32,6 +38,28 @@ if has("autocmd")
   autocmd BufWritePre * :%s/\s\+$//e
 endif
 
-" Shortcuts
+" ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
-map <D-t> :edit .<CR>
+nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
+
+" key mapping for window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" key mapping for textmate-like indentation
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+" autocomplete
+imap <Tab> <C-n>
+imap <S-Tab> <C-p>
+imap <C-Space> <C-n>
+imap <S-C-Space> <C-p>
+
+" split
+nmap <C-s> :sp .<CR>
+nmap <C-v> :vs .<CR>
