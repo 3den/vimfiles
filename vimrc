@@ -29,18 +29,22 @@ colorschem 3den
 set tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent expandtab smarttab smartindent
 
-" Automatic Commands
+" ######### Automatic Commands ##########
 if has("autocmd")
   " Reload VIMRV
   autocmd BufWritePost *vimrc source $MYVIMRC
 
   " Trim white spaces
   autocmd BufWritePre * :%s/\s\+$//e
+
+  " Auto Complete
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 endif
 
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
+nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
 
 " key mapping for window navigation
 map <C-h> <C-w>h
@@ -48,18 +52,22 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+"key mapping for saving file
+nmap <C-s> :w<CR>
+nmap <D-s> :w<CR>
+
 " key mapping for textmate-like indentation
 nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
+imap <D-[> <Esc><<i
+imap <D-]> <Esc>>>i
 
 " autocomplete
-imap <Tab> <C-n>
-imap <S-Tab> <C-p>
 imap <C-Space> <C-n>
 imap <S-C-Space> <C-p>
 
 " split
-nmap <C-s> :sp .<CR>
-nmap <C-v> :vs .<CR>
+nmap <leader>s :sp .<CR>\|<leader>t
+nmap <leader>S :vs .<CR>\|<leader>t
