@@ -25,6 +25,12 @@ syntax on
 set guifont=Menlo:h14
 colorschem 3den
 
+function! SetTabSize()
+  let &l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth =')
+  let &l:softtabstop = &l:tabstop
+  let &l:shiftwidth = &l:tabstop
+endfunction
+
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent expandtab smarttab smartindent
