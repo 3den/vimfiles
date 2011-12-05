@@ -74,6 +74,4 @@ imap <D-]> <Esc>>>i
 imap <C-Space> <C-n>
 imap <S-C-Space> <C-p>
 
-" split
-nmap <leader>s :sp .<CR>\|<leader>t
-nmap <leader>S :vs .<CR>\|<leader>t
+
