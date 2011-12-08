@@ -47,16 +47,30 @@ if has("autocmd")
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 endif
 
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+
+set statusline+=%{SyntasticStatuslineFlag()}
+
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
 nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 
 " key mapping for window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" faster movement
+map <S-h> 10h
+map <S-j> 10j
+map <S-k> 10k
+map <S-l> 10l
 
 "key mapping for saving file
 nmap <C-s> :w<CR>
