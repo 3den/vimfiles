@@ -23,6 +23,7 @@ set hlsearch    "hilight searches by default
 " Colorshem
 syntax on
 set guifont=Menlo:h14
+set background=dark
 colorschem 3den
 
 function! SetTabSize()
@@ -52,7 +53,17 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 
-set statusline+=%{SyntasticStatuslineFlag()}
+" Execute open rspec buffer
+" Thanks to Ian Smith-Heisters
+function! RunSpec(args)
+  let cmd = ":! rspec % -cfn " . a:args
+  execute cmd
+endfunction
+
+" run one rspec example or describe block based on cursor position
+nmap !s :call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
+" run full rspec file
+nmap !S :call RunSpec("")<CR>
 
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
@@ -65,12 +76,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-" faster movement
-map <S-h> 10h
-map <S-j> 10j
-map <S-k> 10k
-map <S-l> 10l
 
 "key mapping for saving file
 nmap <C-s> :w<CR>
