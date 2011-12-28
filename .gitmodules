@@ -34,3 +34,6 @@
 [submodule "bundle/jquery"]
 	path = bundle/jquery
 	url = https://github.com/itspriddle/vim-jquery.git
+[submodule "bundle/colors-wombat"]
+	path = bundle/colors-wombat
+	url = https://github.com/cschlueter/vim-wombat.git
