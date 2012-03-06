@@ -3,7 +3,7 @@
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
-	url = https://git.wincent.com/command-t.git
+  url = https://github.com/wincent/Command-T.git
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = https://github.com/tpope/vim-rails.git
