@@ -37,3 +37,6 @@
 [submodule "bundle/colors-wombat"]
 	path = bundle/colors-wombat
 	url = https://github.com/cschlueter/vim-wombat.git
+[submodule "bundle/tomdoc"]
+	path = bundle/tomdoc
+	url = https://github.com/duwanis/tomdoc.vim.git
