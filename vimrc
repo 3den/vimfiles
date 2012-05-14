@@ -44,9 +44,6 @@ if has("autocmd")
   " Trim white spaces
   autocmd BufWritePre * :%s/\s\+$//e
 
-  " Generate ctags
-  autocmd BufWritePost * silent! :!ctags %
-
   " Auto Complete
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 endif
