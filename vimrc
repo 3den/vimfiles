@@ -14,9 +14,6 @@ set vb t_vb=
 set splitbelow
 set splitright
 
-" Always display the status line
-set laststatus=2
-
 " Search
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
@@ -33,7 +30,7 @@ colorschem 3den
 
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
-set autoindent expandtab smarttab smartindent
+set autoindent expandtab smarttab
 
 " Automatic Commands
 if has("autocmd")
