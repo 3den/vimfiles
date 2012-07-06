@@ -25,8 +25,8 @@ set complete=.,w,t
 
 " Colorshem
 syntax on
-set background=dark
-colorschem 3den
+set t_Co=256
+colorscheme wombat256
 
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
@@ -36,7 +36,6 @@ set autoindent expandtab smarttab
 if has("autocmd")
   " Reload VIMRV
   autocmd BufWritePost vimrc source $MYVIMRC
-  autocmd BufWritePost gvimrc source $MYGVIMRC
 
   " Trim white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -60,7 +59,7 @@ endfunc
 nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " Execute open rspec buffer
-function! RunSpec(args)
+function! Run(args)
   let cmd = ":! rspec % -cfn " . a:args
   execute cmd
 endfunction

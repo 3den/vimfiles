@@ -7,9 +7,6 @@
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = https://github.com/tpope/vim-rails.git
-[submodule "bundle/colors-solarized"]
-	path = bundle/colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -34,12 +31,18 @@
 [submodule "bundle/jquery"]
 	path = bundle/jquery
 	url = https://github.com/itspriddle/vim-jquery.git
-[submodule "bundle/colors-wombat"]
-	path = bundle/colors-wombat
-	url = https://github.com/cschlueter/vim-wombat.git
 [submodule "bundle/tomdoc"]
 	path = bundle/tomdoc
 	url = https://github.com/duwanis/tomdoc.vim.git
 [submodule "bundle/ruby"]
 	path = bundle/ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "bundle/coffee-script"]
+	path = bundle/coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/handlebars"]
+	path = bundle/handlebars
+	url = https://github.com/nono/vim-handlebars
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = git@github.com:flazz/vim-colorschemes.git
