@@ -1,5 +1,5 @@
 " Transparent Window
-set transparency=20
+set transparency=10
 
 " No toolbar
 set guioptions-=T
@@ -11,7 +11,7 @@ set guioptions+=c
 set guifont=Menlo:h14
 
 " Color
-colorscheme wombat
+colorscheme wombat256
 
 " Automatic Commands
 if has("autocmd")
