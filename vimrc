@@ -3,12 +3,11 @@ set nocompatible
 
 " Plugins
 call pathogen#infect()
+filetype plugin on
 
 " View Options
-set hidden
-set number
+set hidden number showmode
 set showbreak=...
-set showmode
 set wrap linebreak nolist
 set vb t_vb=
 set splitbelow
@@ -30,7 +29,7 @@ colorscheme wombat256
 
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
-set autoindent expandtab smarttab
+set smartindent autoindent expandtab smarttab
 
 " Automatic Commands
 if has("autocmd")
@@ -58,14 +57,6 @@ function! <SID>SynStack()
 endfunc
 nmap <C-S-P> :call <SID>SynStack()<CR>
 
-" Execute open rspec buffer
-function! Run(args)
-  let cmd = ":! rspec % -cfn " . a:args
-  execute cmd
-endfunction
-nmap !s :call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
-nmap !S :call RunSpec("")<CR>
-
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
@@ -74,8 +65,8 @@ nmap <leader>n :NERDTree %<CR>
 
 " key mapping for window navigation
 map <C-_> <C-w>_
-map <C-h> <C-w>h
-map <C-j> <C-w>j
+map <c-h> <c-w>h
+map <c-j> <c-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
