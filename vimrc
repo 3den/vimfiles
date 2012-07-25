@@ -3,24 +3,29 @@ set nocompatible
 
 " Plugins
 call pathogen#infect()
-filetype plugin on
+filetype plugin indent on
 
 " View Options
-set hidden number showmode
 set showbreak=...
-set wrap linebreak nolist
 set vb t_vb=
-set splitbelow
-set splitright
+set scrolloff=3
+set laststatus=2
+set textwidth=80
+set title hidden number
+set wrap linebreak nolist
+set splitbelow splitright
 
 " Search
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
 
 " Tab completion options
-set showcmd
+set showmode showcmd wildmenu
 set wildmode=list:longest,list:full
 set complete=.,w,t
+
+" Intuitive backspacing.
+set backspace=indent,eol,start
 
 " Colorshem
 syntax on
@@ -74,13 +79,11 @@ map <C-l> <C-w>l
 nmap <C-s> :w<CR>
 nmap <D-s> :w<CR>
 
-" key mapping for textmate-like indentation
-nmap <D-[> <<
-nmap <D-]> >>
-vmap <D-[> <gv
-vmap <D-]> >gv
-imap <D-[> <Esc><<i
-imap <D-]> <Esc>>>i
+" key mapping for tab indentation
+nmap <S-Tab> <<
+nmap <Tab> >>
+vmap <S-Tab> <gv
+vmap <Tab> >gv
 
 " autocomplete
 imap <C-Space> <C-n>
