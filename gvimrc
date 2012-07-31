@@ -1,5 +1,5 @@
 " Transparent Window
-set transparency=10
+set transparency=20
 
 " No toolbar
 set guioptions-=T
@@ -12,10 +12,4 @@ set guifont=Menlo:h14
 
 " Color
 colorscheme wombat256
-
-" Automatic Commands
-if has("autocmd")
-  " Reload VIMRV
-  autocmd BufWritePost gvimrc source $MYGVIMRC
-endif
 

@@ -40,6 +40,7 @@ set smartindent autoindent expandtab smarttab
 if has("autocmd")
   " Reload VIMRV
   autocmd BufWritePost vimrc source $MYVIMRC
+  autocmd BufWritePost gvimrc source $MYGVIMRC
 
   " Trim white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -52,6 +53,8 @@ endif
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_warnings=1
+
 
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack()
