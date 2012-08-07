@@ -29,18 +29,28 @@ set backspace=indent,eol,start
 
 " Colorshem
 syntax on
-set t_Co=256
 colorscheme wombat256
+
+" File Explorer
+let g:netrw_list_hide='^\..*'
 
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
 set smartindent autoindent expandtab smarttab
+
+"folding settings
+set foldmethod=indent
+set foldlevel=1
+set nofoldenable
 
 " Automatic Commands
 if has("autocmd")
   " Reload VIMRV
   autocmd BufWritePost vimrc source $MYVIMRC
   autocmd BufWritePost gvimrc source $MYGVIMRC
+
+  " Clean Fugitive Buffer
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 
   " Trim white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -49,12 +59,14 @@ if has("autocmd")
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 endif
 
+" Commands
+command W :w
+
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
-
 
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack()
@@ -69,7 +81,7 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
 nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
-nmap <leader>n :NERDTree %<CR>
+nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 
 " key mapping for window navigation
 map <C-_> <C-w>_
