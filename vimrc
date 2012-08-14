@@ -46,8 +46,8 @@ set nofoldenable
 " Automatic Commands
 if has("autocmd")
   " Reload VIMRV
-  autocmd BufWritePost vimrc source $MYVIMRC
-  autocmd BufWritePost gvimrc source $MYGVIMRC
+  autocmd BufWritePost .vimrc source $MYVIMRC
+  autocmd BufWritePost .gvimrc source $MYGVIMRC
 
   " Clean Fugitive Buffer
   autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -81,6 +81,7 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
 nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
+nmap <leader>x :Ex<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 
 " key mapping for window navigation
