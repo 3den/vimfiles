@@ -84,6 +84,10 @@ nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
 nmap <leader>x :Ex<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 
+map !t <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
+map !T <Plug>RubyFileRun     " change from <Leader>T to <Leader>]
+map !l <Plug>RubyTestRunLast " change from <Leader>l to <Leader>/
+
 " key mapping for window navigation
 map <C-_> <C-w>_
 map <c-h> <c-w>h
