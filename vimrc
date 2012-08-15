@@ -45,7 +45,7 @@ set nofoldenable
 
 " Automatic Commands
 if has("autocmd")
-  " Reload VIMRV
+  " Reload VIMRC
   autocmd BufWritePost .vimrc source $MYVIMRC
   autocmd BufWritePost .gvimrc source $MYGVIMRC
 

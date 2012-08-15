@@ -8,7 +8,7 @@ set guioptions-=T
 set guioptions+=c
 
 " Font
-set guifont=Menlo:h14
+set guifont=Menlo:h16
 
 " Color
 colorscheme wombat256
