@@ -27,13 +27,6 @@ set complete=.,w,t
 " Intuitive backspacing.
 set backspace=indent,eol,start
 
-" Colorshem
-syntax on
-colorscheme wombat256
-
-" File Explorer
-let g:netrw_list_hide='^\..*'
-
 " Tabs & Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2
 set smartindent autoindent expandtab smarttab
@@ -42,6 +35,22 @@ set smartindent autoindent expandtab smarttab
 set foldmethod=indent
 set foldlevel=1
 set nofoldenable
+
+" Colorshem
+syntax on
+colorscheme wombat256
+
+" File Explorer
+let g:netrw_list_hide='^\..*'
+
+" Tests
+let g:rubytest_in_quickfix=0
+
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_warnings=1
 
 " Automatic Commands
 if has("autocmd")
@@ -60,13 +69,7 @@ if has("autocmd")
 endif
 
 " Commands
-command W :w
-
-" Syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_warnings=1
+command! W :w
 
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack()
@@ -82,11 +85,12 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
 nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
 nmap <leader>x :Ex<CR>
+nmap <leader>o :only<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 
-map !t <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
-map !T <Plug>RubyFileRun     " change from <Leader>T to <Leader>]
-map !l <Plug>RubyTestRunLast " change from <Leader>l to <Leader>/
+" Tests
+map ,s :exec "!rspec -fd %"<CR>
+map ,S :exec "!rspec -fd % -l " . line(".")<CR>
 
 " key mapping for window navigation
 map <C-_> <C-w>_
@@ -95,7 +99,7 @@ map <c-j> <c-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-"key mapping for saving file
+" key mapping for saving file
 nmap <C-s> :w<CR>
 nmap <D-s> :w<CR>
 
@@ -105,8 +109,11 @@ nmap <Tab> >>
 vmap <S-Tab> <gv
 vmap <Tab> >gv
 
+" key mappings for selection
+map <Leader>= ggVG=
+map <Leader>f :set foldenable!<CR>
+
 " autocomplete
 imap <C-Space> <C-n>
 imap <S-C-Space> <C-p>
-
 
