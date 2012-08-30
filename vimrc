@@ -82,8 +82,8 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
-nmap <leader>t :CommandTFlush<CR>\|:CommandT<CR>
-nmap <leader>b :CommandTFlush<CR>\|:CommandTBuffer<CR>
+nmap <leader>t :CtrlP<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>x :Ex<CR>
 nmap <leader>o :only<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
