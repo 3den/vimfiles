@@ -91,6 +91,9 @@ nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 map <leader>s :exec "!rspec -fd %"<CR>
 map <leader>S :exec "!rspec -fd % -l " . line(".")<CR>
 
+" Ctags
+map <F5> :exec "!ctags -R --exclude=.git"<CR>
+
 " key mapping for window navigation
 map <C-_> <C-w>_
 map <c-h> <c-w>h
