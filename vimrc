@@ -42,9 +42,8 @@ colorscheme wombat256
 
 " File Explorer
 let g:netrw_list_hide='^\..*'
-
-" Tests
-let g:rubytest_in_quickfix=0
+let g:netrw_fastbrowse=0
+let g:ctrlp_custom_ignore='\v\/\.'
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -82,15 +81,15 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
-nmap <leader>t :CtrlP<CR>
-nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>t :CtrlPClearAllCache<CR>\|:CtrlP<CR>
+nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
 nmap <leader>x :Ex<CR>
 nmap <leader>o :only<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 
 " Tests
-map ,s :exec "!rspec -fd %"<CR>
-map ,S :exec "!rspec -fd % -l " . line(".")<CR>
+map <leader>s :exec "!rspec -fd %"<CR>
+map <leader>S :exec "!rspec -fd % -l " . line(".")<CR>
 
 " key mapping for window navigation
 map <C-_> <C-w>_
