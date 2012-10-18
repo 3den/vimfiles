@@ -81,15 +81,15 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
-nmap <leader>t :CtrlPClearAllCache<CR>\|:CtrlP<CR>
+nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
 nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
 nmap <leader>x :Ex<CR>
-nmap <leader>o :only<CR>
+nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 
 " Tests
-map <leader>s :exec "!rspec -fd %"<CR>
-map <leader>S :exec "!rspec -fd % -l " . line(".")<CR>
+map <leader>s :w<CR>\|:exec "!rspec -fd %"<CR>
+map <leader>S :w<CR>\|:exec "!rspec -fd % -l " . line(".")<CR>
 
 " Ctags
 map <F5> :exec "!ctags -R --exclude=.git"<CR>
@@ -113,7 +113,6 @@ vmap <Tab> >gv
 
 " key mappings for selection
 map <Leader>= ggVG=
-map <Leader>f :set foldenable!<CR>
 
 " autocomplete
 imap <C-Space> <C-n>
