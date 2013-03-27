@@ -15,9 +15,14 @@ set title hidden number
 set wrap linebreak nolist
 set splitbelow splitright
 
+" Save
+set nobackup       " Don't make a backup before overwriting a file.
+set nowritebackup  " And again.
+
 " Search
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
+set smartcase
 
 " Tab completion options
 set showmode showcmd wildmenu
@@ -43,7 +48,7 @@ colorscheme wombat256
 " File Explorer
 let g:netrw_list_hide='^\..*'
 let g:netrw_fastbrowse=0
-let g:ctrlp_custom_ignore='\v\/\.'
+let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)'
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -81,25 +86,37 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
 nmap <leader>v :tabedit $MYVIMRC<CR>
+nmap <leader>a <C-w>v\|:A<CR>
 nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
 nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
-nmap <leader>x :Ex<CR>
+nmap <Leader>t :tabnew<CR>\|:CtrlPClearAllCache<CR>\|:CtrlP<CR>
+nmap - :Ex<CR>
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
+nmap <leader>A :only<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
+
+" Toggle Syntastic Errors ON/OFF
+nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
-map <leader>s :w<CR>\|:exec "!rspec -fd %"<CR>
+let g:tests="rspec -fd %"
+command! RunTests :exec "!".g:tests
+map ,t :RunTests<CR>
+map <leader>s :w<CR>\|:RunTests<CR>
 map <leader>S :w<CR>\|:exec "!rspec -fd % -l " . line(".")<CR>
 
 " Ctags
-map <F5> :exec "!ctags -R --exclude=.git"<CR>
+map <F5> :exec "!ctags -R --exclude=.git --exclude=log --exclude=tmp *"<CR>
 
-" key mapping for window navigation
+" key mapping for navigation
 map <C-_> <C-w>_
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+map j gj
+map k gk
 
 " key mapping for saving file
 nmap <C-s> :w<CR>
@@ -107,7 +124,6 @@ nmap <D-s> :w<CR>
 
 " key mapping for tab indentation
 nmap <S-Tab> <<
-nmap <Tab> >>
 vmap <S-Tab> <gv
 vmap <Tab> >gv
 

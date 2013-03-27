@@ -46,3 +46,12 @@
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundle/jade"]
+	path = bundle/jade
+	url = https://github.com/digitaltoad/vim-jade.git
+[submodule "bundle/less"]
+	path = bundle/less
+	url = git://github.com/groenewege/vim-less.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/tpope/vim-markdown.git
