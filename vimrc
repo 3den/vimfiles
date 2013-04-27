@@ -26,8 +26,9 @@ set smartcase
 
 " Tab completion options
 set showmode showcmd wildmenu
-set wildmode=list:longest,list:full
+set wildmode=full
 set complete=.,w,t
+set history=100
 
 " Intuitive backspacing.
 set backspace=indent,eol,start
@@ -88,12 +89,15 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>a <C-w>v\|:A<CR>
 nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
+nmap <leader>F :tabnew<CR><leader>f
 nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
-nmap <Leader>t :tabnew<CR>\|:CtrlPClearAllCache<CR>\|:CtrlP<CR>
+nmap <leader>B :tabnew<CR><leader>b
 nmap - :Ex<CR>
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
-nmap <leader>A :only<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
+nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
+nmap <leader>q :q<CR>
+nmap <leader>Q :qa<CR>
 
 " Toggle Syntastic Errors ON/OFF
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
@@ -102,16 +106,16 @@ nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 let g:tests="rspec -fd %"
 command! RunTests :exec "!".g:tests
 map ,t :RunTests<CR>
-map <leader>s :w<CR>\|:RunTests<CR>
-map <leader>S :w<CR>\|:exec "!rspec -fd % -l " . line(".")<CR>
+map <leader>t :w<CR>\|:RunTests<CR>
+map <leader>T :w<CR>\|:exec "!rspec -fd % -l " . line(".")<CR>
 
 " Ctags
 map <F5> :exec "!ctags -R --exclude=.git --exclude=log --exclude=tmp *"<CR>
 
 " key mapping for navigation
-map <C-_> <C-w>_
-map <c-h> <c-w>h
-map <c-j> <c-w>j
+map <C-w>X <C-w>=\|10<C-w>>\|10<C-w>+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
@@ -120,7 +124,7 @@ map k gk
 
 " key mapping for saving file
 nmap <C-s> :w<CR>
-nmap <D-s> :w<CR>
+imap <C-s> <Esc>:w<CR>
 
 " key mapping for tab indentation
 nmap <S-Tab> <<
@@ -133,4 +137,3 @@ map <Leader>= ggVG=
 " autocomplete
 imap <C-Space> <C-n>
 imap <S-C-Space> <C-p>
-
