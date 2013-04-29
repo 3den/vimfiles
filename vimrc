@@ -49,6 +49,13 @@ colorscheme wombat256
 " File Explorer
 let g:netrw_list_hide='^\..*'
 let g:netrw_fastbrowse=0
+let g:netrw_altv          = 1
+let g:netrw_fastbrowse    = 2
+let g:netrw_keepdir       = 0
+let g:netrw_liststyle     = 2
+let g:netrw_retmap        = 1
+let g:netrw_silent        = 1
+let g:netrw_special_syntax= 1
 let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)'
 
 " Syntastic
