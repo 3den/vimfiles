@@ -58,3 +58,6 @@
 [submodule "bundle/fat-finger"]
 	path = bundle/fat-finger
 	url = https://github.com/chip/vim-fat-finger.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
