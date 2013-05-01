@@ -89,18 +89,19 @@ endfunc
 nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
+nmap - :Ex<CR>
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader>a <C-w>v\|:A<CR>
 nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
 nmap <leader>F :tabnew<CR><leader>f
 nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
 nmap <leader>B :tabnew<CR><leader>b
-nmap - :Ex<CR>
+nmap <leader>s :UltiSnipsEdit<CR>
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
-nmap <leader>q :q<CR>
-nmap <leader>Q :qa<CR>
+nmap <leader>q :wq<CR>
+nmap <leader>Q :qa!<CR>
 
 " Toggle Syntastic Errors ON/OFF
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
