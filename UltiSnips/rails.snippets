@@ -1,0 +1,31 @@
+snippet describe "describe spec" b
+describe "${1}" do
+  ${2}
+end
+endsnippet
+
+snippet context "context spec" b
+context "${1}" do
+  ${2}
+end
+endsnippet
+
+snippet it "it test block" b
+it "${1}" do
+  ${2}
+end
+endsnippet
+
+snippet scenario "scenario test block" b
+scenario "${1}" do
+  ${2}
+end
+endsnippet
+
+snippet let "scenario test block" b
+let(:${1:object}) { ${2} }
+endsnippet
+
+snippet subj "subject test block" b
+subject { ${1} }
+endsnippet
