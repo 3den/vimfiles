@@ -49,9 +49,9 @@ colorscheme wombat256
 " File Explorer
 let g:netrw_list_hide='^\..*'
 let g:netrw_fastbrowse=0
-let g:netrw_altv          = 1
-let g:netrw_fastbrowse = 2
-let g:netrw_retmap        = 1
+let g:netrw_altv=1
+let g:netrw_fastbrowse=2
+let g:netrw_retmap=1
 let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)'
 
 " Syntastic
@@ -59,6 +59,11 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
+
+" Snippets
+let g:UltiSnipsExpandTrigger="<M-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<M-j>"
+let g:UltiSnipsJumpBackwardTrigger="<M-k>"
 
 " Automatic Commands
 if has("autocmd")
@@ -100,7 +105,7 @@ nmap <leader>s :UltiSnipsEdit<CR>
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
-nmap <leader>q :wq<CR>
+nmap <leader>q :q<CR>
 nmap <leader>Q :qa!<CR>
 
 " Toggle Syntastic Errors ON/OFF
