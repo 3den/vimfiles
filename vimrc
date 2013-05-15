@@ -2,8 +2,10 @@
 set nocompatible
 
 " Plugins
-call pathogen#infect()
 filetype plugin indent on
+
+set rtp+=~/.vim/bundle/vundle/
+source ~/.vim/bundles
 
 " View Options
 set showbreak=...
@@ -107,6 +109,7 @@ nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
 nmap <leader>q :q<CR>
 nmap <leader>Q :qa!<CR>
+nmap <leader>c "+p
 
 " Toggle Syntastic Errors ON/OFF
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
