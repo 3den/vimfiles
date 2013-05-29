@@ -9,6 +9,7 @@ source ~/.vim/bundles
 
 " View Options
 set showbreak=...
+set cursorline
 set vb t_vb=
 set scrolloff=3
 set laststatus=2
@@ -62,10 +63,10 @@ let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
 
-" Snippets
-let g:UltiSnipsExpandTrigger="<M-Tab>"
-let g:UltiSnipsJumpForwardTrigger="<M-j>"
-let g:UltiSnipsJumpBackwardTrigger="<M-k>"
+" YouCompleteMe
+let g:ycm_complete_in_comments=1
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+let g:ycm_filepath_completion_use_working_dir=1
 
 " Automatic Commands
 if has("autocmd")
@@ -139,6 +140,7 @@ nmap <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 
 " key mapping for tab indentation
+nmap <Tab> >>
 nmap <S-Tab> <<
 vmap <S-Tab> <gv
 vmap <Tab> >gv
