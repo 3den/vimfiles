@@ -1,16 +1,19 @@
 " Use Vim settings
 set nocompatible
 
+set rtp+=~/.vim/bundle/vundle/
+source ~/.vim/bundles
+
 " Plugins
-call pathogen#infect()
+syntax on
 filetype plugin indent on
 
 " View Options
 set showbreak=...
+set cursorline
 set vb t_vb=
 set scrolloff=3
 set laststatus=2
-set textwidth=80
 set title hidden number
 set wrap linebreak nolist
 set splitbelow splitright
@@ -43,7 +46,6 @@ set foldlevel=1
 set nofoldenable
 
 " Colorshem
-syntax on
 colorscheme wombat256
 
 " File Explorer
@@ -60,10 +62,10 @@ let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
 
-" Snippets
-let g:UltiSnipsExpandTrigger="<M-Tab>"
-let g:UltiSnipsJumpForwardTrigger="<M-j>"
-let g:UltiSnipsJumpBackwardTrigger="<M-k>"
+" YouCompleteMe
+let g:ycm_complete_in_comments=1
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+let g:ycm_filepath_completion_use_working_dir=1
 
 " Automatic Commands
 if has("autocmd")
@@ -101,12 +103,12 @@ nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
 nmap <leader>F :tabnew<CR><leader>f
 nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
 nmap <leader>B :tabnew<CR><leader>b
-nmap <leader>s :UltiSnipsEdit<CR>
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
 nmap <leader>q :q<CR>
 nmap <leader>Q :qa!<CR>
+nmap <leader>c "+p
 
 " Toggle Syntastic Errors ON/OFF
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
@@ -134,8 +136,10 @@ map k gk
 " key mapping for saving file
 nmap <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
+vmap <C-s> <Esc>:w<CR>
 
 " key mapping for tab indentation
+nmap <Tab> >>
 nmap <S-Tab> <<
 vmap <S-Tab> <gv
 vmap <Tab> >gv
