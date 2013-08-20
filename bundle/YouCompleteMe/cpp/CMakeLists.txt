@@ -28,6 +28,10 @@ if ( ${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD" )
   set( SYSTEM_IS_FREEBSD true )
 endif()
 
+if ( ${CMAKE_SYSTEM_NAME} MATCHES "SunOS" )
+  set( SYSTEM_IS_SUNOS true )
+endif()
+
 # Check if platform is 64 bit
 if( CMAKE_SIZEOF_VOID_P EQUAL 4 )
   set( 64_BIT_PLATFORM 0 )
@@ -58,8 +62,7 @@ if ( CMAKE_CXX_COMPILER_ID STREQUAL "Clang" )
   set( COMPILER_IS_CLANG true )
 
   # The Travis CI build machines don't have libc++ installed
-  # Also, FreeBSD complains about this too. See issue #349.
-  if ( NOT DEFINED ENV{TRAVIS} AND NOT SYSTEM_IS_FREEBSD )
+  if ( NOT DEFINED ENV{TRAVIS} )
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++" )
   endif()
 endif()
@@ -83,6 +86,12 @@ elseif( COMPILER_IS_CLANG )
   set( CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++" )
 endif()
 
+# For MSVC enable UNICODE and compilation on multiple processors
+if( MSVC )
+  add_definitions( /DUNICODE /D_UNICODE /Zc:wchar_t-  )
+	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP" )
+endif()
+
 # When used with Clang, adding the -std=c++0x flag to CMAKE_CXX_FLAGS will cause
 # the compiler to output a warning during linking:
 #  clang: warning: argument unused during compilation: '-std=c++0x'
@@ -94,7 +103,13 @@ endif()
 # too. Sadly there's no way around the warning.
 if ( CPP11_AVAILABLE )
   message( "Your C++ compiler supports C++11, compiling in that mode." )
-  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" )
+
+  # Cygwin needs its hand held a bit; see issue #473
+  if ( CYGWIN AND CMAKE_COMPILER_IS_GNUCXX )
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++0x" )
+  else()
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" )
+  endif()
 else()
   message(
     "Your C++ compiler does NOT support C++11, compiling in C++03 mode." )

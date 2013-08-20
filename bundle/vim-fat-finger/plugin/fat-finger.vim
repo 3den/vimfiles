@@ -851,6 +851,7 @@ iabbrev comissioned commissioned
 iabbrev comissioner commissioner
 iabbrev comissioning commissioning
 iabbrev comissions commissions
+iabbrev comit commit
 iabbrev comited committed
 iabbrev comiting committing
 iabbrev comitted committed
@@ -2083,11 +2084,15 @@ iabbrev indispensible indispensable
 iabbrev indisputible indisputable
 iabbrev indisputibly indisputably
 iabbrev indite indict
+iabbrev individauly individually
 iabbrev individualy individually
+iabbrev individaully individually
 iabbrev indpendent independent
 iabbrev indpendently independently
 iabbrev indulgue indulge
 iabbrev indutrial industrial
+iabbrev individaul individual
+iabbrev individauls individuals
 iabbrev indviduals individuals
 iabbrev inefficienty inefficiently
 iabbrev inevatible inevitable

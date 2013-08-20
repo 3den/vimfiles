@@ -28,37 +28,42 @@ if ( NOT PYTHONLIBS_VERSION_STRING VERSION_LESS "3.0.0" )
     "python2.\n" )
 endif()
 
+option( USE_DEV_FLAGS "Use compilation flags meant for YCM developers" OFF )
 option( USE_CLANG_COMPLETER "Use Clang semantic completer for C/C++/ObjC" OFF )
-option( PATH_TO_LLVM_ROOT "Path to the root of a LLVM+Clang binary distribution" )
 option( USE_SYSTEM_LIBCLANG "Set to ON to use the system libclang library" OFF )
-option( EXTERNAL_LIBCLANG_PATH "Path libclang library to use" )
+set( PATH_TO_LLVM_ROOT "" CACHE PATH "Path to the root of a LLVM+Clang binary distribution" )
+set( EXTERNAL_LIBCLANG_PATH "" CACHE PATH  "Path libclang library to use" )
 
 if ( USE_CLANG_COMPLETER AND NOT USE_SYSTEM_LIBCLANG AND NOT PATH_TO_LLVM_ROOT )
-  message( "Downloading Clang 3.2" )
+  message( "Downloading Clang 3.3" )
 
-  set( CLANG_URL "http://llvm.org/releases/3.2" )
+  set( CLANG_URL "http://llvm.org/releases/3.3" )
 
   if ( APPLE )
-    set( CLANG_DIRNAME "clang+llvm-3.2-x86_64-apple-darwin11" )
-    set( CLANG_MD5 "fbdca3b4e8cdaa2352f2aeb038a16532" )
+    set( CLANG_DIRNAME "clang+llvm-3.3-x86_64-apple-darwin12" )
+    set( CLANG_MD5 "3c9984ca05f68ca5dc7e06dad92a96ab" )
+    set( CLANG_FILENAME "${CLANG_DIRNAME}.tar.gz" )
   else()
     if ( 64_BIT_PLATFORM )
-      set( CLANG_DIRNAME "clang+llvm-3.2-x86_64-linux-ubuntu-12.04" )
-      set( CLANG_MD5 "81821e339d7300afb76aca8edab2cf4f" )
+      set( CLANG_DIRNAME "clang+llvm-3.3-Ubuntu-13.04-x86_64-linux-gnu" )
+      set( CLANG_MD5 "c0cbbe86c5836e03fe6eb96e95d059fa" )
     else()
-      set( CLANG_DIRNAME "clang+llvm-3.2-x86-linux-ubuntu-12.04" )
-      set( CLANG_MD5 "cea2d01b3206e92a8df7b079935c070b" )
+      set( CLANG_DIRNAME "clang+llvm-3.3-i386-debian6" )
+      set( CLANG_MD5 "415d033b60659433d4631df894673802" )
     endif()
+    set( CLANG_FILENAME "${CLANG_DIRNAME}.tar.bz2" )
   endif()
-
-  set( CLANG_FILENAME "${CLANG_DIRNAME}.tar.gz" )
 
   file(
     DOWNLOAD "${CLANG_URL}/${CLANG_FILENAME}" "./${CLANG_FILENAME}"
     SHOW_PROGRESS EXPECTED_MD5 "${CLANG_MD5}"
   )
 
-  execute_process( COMMAND tar -xzf ${CLANG_FILENAME} )
+  if ( CLANG_FILENAME MATCHES ".+bz2" )
+    execute_process( COMMAND tar -xjf ${CLANG_FILENAME} )
+  else()
+    execute_process( COMMAND tar -xzf ${CLANG_FILENAME} )
+  endif()
 
   # And set PATH_TO_LLVM_ROOT
   set( PATH_TO_LLVM_ROOT "${CMAKE_CURRENT_BINARY_DIR}/../${CLANG_DIRNAME}" )
@@ -104,7 +109,7 @@ endif()
 
 if ( NOT EXTERNAL_LIBCLANG_PATH AND PATH_TO_LLVM_ROOT )
   # Need TEMP because find_library does not work with an option variable
-  find_library( TEMP clang
+  find_library( TEMP NAMES clang libclang
                 PATHS ${PATH_TO_LLVM_ROOT}/lib
                 NO_DEFAULT_PATH )
   set( EXTERNAL_LIBCLANG_PATH ${TEMP} )
@@ -231,12 +236,19 @@ target_link_libraries( ${PROJECT_NAME}
                        ${EXTRA_LIBS}
                      )
 
-if ( LIBCLANG_TARGET )
-  add_custom_command(
-    TARGET ${PROJECT_NAME}
-    POST_BUILD
-    COMMAND cp "${LIBCLANG_TARGET}" "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
-  )
+if( LIBCLANG_TARGET )
+  if( NOT WIN32 )
+    add_custom_command(
+      TARGET ${PROJECT_NAME}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy "${LIBCLANG_TARGET}" "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+    )
+  else()
+    add_custom_command(
+      TARGET ${PROJECT_NAME}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy "${PATH_TO_LLVM_ROOT}/bin/libclang.dll" "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
+  endif()
 endif()
 
 #############################################################################
@@ -284,7 +296,7 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 
 # For some reason, Xcode is too dumb to understand the -isystem flag and thus
 # borks on warnings in Boost.
-if ( ( CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG ) AND
+if ( USE_DEV_FLAGS AND ( CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG ) AND
      NOT CMAKE_GENERATOR_IS_XCODE )
   # We want all warnings, and warnings should be treated as errors
   set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror" )
@@ -295,11 +307,16 @@ endif()
 # We want warnings if we accidentally use C++11 features
 # We can't use this warning on FreeBSD because std headers on that OS are dumb.
 # See here: https://github.com/Valloric/YouCompleteMe/issues/260
-if ( COMPILER_IS_CLANG AND NOT CMAKE_GENERATOR_IS_XCODE AND NOT
-     SYSTEM_IS_FREEBSD )
+if ( USE_DEV_FLAGS AND COMPILER_IS_CLANG AND NOT CMAKE_GENERATOR_IS_XCODE AND
+     NOT SYSTEM_IS_FREEBSD )
   set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wc++98-compat" )
 endif()
 
 #############################################################################
+
+if( SYSTEM_IS_SUNOS )
+  # SunOS needs this setting for thread support
+  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthreads" )
+endif()
 
 add_subdirectory( tests )

@@ -1,11 +1,12 @@
 " Use Vim settings
 set nocompatible
 
-" Plugins
-filetype plugin indent on
-
 set rtp+=~/.vim/bundle/vundle/
 source ~/.vim/bundles
+
+" Plugins
+syntax on
+filetype plugin indent on
 
 " View Options
 set showbreak=...
@@ -13,7 +14,6 @@ set cursorline
 set vb t_vb=
 set scrolloff=3
 set laststatus=2
-set textwidth=80
 set title hidden number
 set wrap linebreak nolist
 set splitbelow splitright
@@ -46,7 +46,6 @@ set foldlevel=1
 set nofoldenable
 
 " Colorshem
-syntax on
 colorscheme wombat256
 
 " File Explorer
@@ -104,7 +103,6 @@ nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
 nmap <leader>F :tabnew<CR><leader>f
 nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
 nmap <leader>B :tabnew<CR><leader>b
-nmap <leader>s :UltiSnipsEdit<CR>
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
@@ -138,6 +136,7 @@ map k gk
 " key mapping for saving file
 nmap <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
+vmap <C-s> <Esc>:w<CR>
 
 " key mapping for tab indentation
 nmap <Tab> >>

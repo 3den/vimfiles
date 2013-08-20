@@ -164,7 +164,7 @@ endfunction
 
 
 function! s:AllowedToCompleteInCurrentFile()
-  if empty( &filetype )
+  if empty( &filetype ) || getbufvar(winbufnr(winnr()), "&buftype") ==# 'nofile'
     return 0
   endif
 
@@ -206,12 +206,31 @@ function! s:SetUpCompleteopt()
   endif
 endfunction
 
+
+" For various functions/use-cases, we want to keep track of whether the buffer
+" has changed since the last time they were invoked. We keep the state of
+" b:changedtick of the last time the specific function was called in
+" b:ycm_changedtick.
+function! s:SetUpYcmChangedTick()
+  let b:ycm_changedtick  =
+        \ get( b:, 'ycm_changedtick', {
+        \   'file_ready_to_parse' : -1,
+        \ } )
+endfunction
+
+
 function! s:OnVimLeave()
+  py ycm_state.OnVimLeave()
   py extra_conf_store.CallExtraConfVimCloseIfExists()
 endfunction
 
 
 function! s:OnBufferVisit()
+  " We need to do this even when we are not allowed to complete in the current
+  " file because we might be allowed to complete in the future! The canonical
+  " example is creating a new buffer with :enew and then setting a filetype.
+  call s:SetUpYcmChangedTick()
+
   if !s:AllowedToCompleteInCurrentFile()
     return
   endif
@@ -246,7 +265,15 @@ endfunction
 
 
 function! s:OnFileReadyToParse()
-  py ycm_state.OnFileReadyToParse()
+  " We need to call this just in case there is no b:ycm_changetick; this can
+  " happen for special buffers.
+  call s:SetUpYcmChangedTick()
+
+  let buffer_changed = b:changedtick != b:ycm_changedtick.file_ready_to_parse
+  if buffer_changed
+    py ycm_state.OnFileReadyToParse()
+  endif
+  let b:ycm_changedtick.file_ready_to_parse = b:changedtick
 endfunction
 
 
@@ -300,6 +327,7 @@ function! s:OnCursorMovedNormalMode()
   endif
 
   call s:UpdateDiagnosticNotifications()
+  call s:OnFileReadyToParse()
 endfunction
 
 
@@ -310,6 +338,7 @@ function! s:OnInsertLeave()
 
   let s:omnifunc_mode = 0
   call s:UpdateDiagnosticNotifications()
+  call s:OnFileReadyToParse()
   py ycm_state.OnInsertLeave()
   if g:ycm_autoclose_preview_window_after_completion ||
         \ g:ycm_autoclose_preview_window_after_insertion
@@ -380,7 +409,8 @@ endfunction
 function! s:UpdateDiagnosticNotifications()
   if get( g:, 'loaded_syntastic_plugin', 0 ) &&
         \ pyeval( 'ycm_state.NativeFiletypeCompletionUsable()' ) &&
-        \ pyeval( 'ycm_state.DiagnosticsForCurrentFileReady()' )
+        \ pyeval( 'ycm_state.DiagnosticsForCurrentFileReady()' ) &&
+        \ g:ycm_register_as_syntastic_checker
     SyntasticCheck
   endif
 endfunction
@@ -484,7 +514,7 @@ function! s:CompletionsForQuery( query, use_filetype_completer,
     endif
   endwhile
 
-  let l:results = pyeval( 'completer.CandidatesFromStoredRequest()' )
+  let l:results = pyeval( 'base.AdjustCandidateInsertionText( completer.CandidatesFromStoredRequest() )' )
   let s:searched_and_results_found = len( l:results ) != 0
   return { 'words' : l:results, 'refresh' : 'always' }
 endfunction
