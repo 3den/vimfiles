@@ -18,7 +18,7 @@ runtime! syntax/css/*.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn,scssFn
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn,scssFn
 
 syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
@@ -43,16 +43,17 @@ syn match scssFunction "^@function" nextgroup=scssFunctionName
 syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" contained
 syn match scssInclude "@include" nextgroup=scssMixinName
-syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar
+syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedIn=scssComment,cssComment
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
 
-syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssId contains=scssColor
-syn match scssId "[[:alnum:]_-]\+" contained
-syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
-syn match scssClass "[[:alnum:]_-]\+" contained
+syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssSelectorName contains=scssColor
+syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssSelectorName
+syn match scssPlaceholderChar "%[[:alnum:]_-]\@=" nextgroup=scssSelectorName
+syn match scssSelectorName "[[:alnum:]_-]\+" contained
+
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
 
 syn match scssOperator "+" contained
@@ -60,7 +61,7 @@ syn match scssOperator "-" contained
 syn match scssOperator "/" contained
 syn match scssOperator "*" contained
 
-syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,scssFunction,@scssControl,scssInterpolation,scssNestedProperty
+syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssMixin,scssFunction,@scssControl,scssInterpolation,scssNestedProperty
 syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
 
 syn match scssDebug "@debug"
@@ -98,8 +99,8 @@ hi def link scssComment   Comment
 hi def link scssColor     Constant
 hi def link scssIdChar    Special
 hi def link scssClassChar Special
-hi def link scssId        Identifier
-hi def link scssClass     Identifier
+hi def link scssPlaceholderChar Special
+hi def link scssSelectorName Identifier
 hi def link scssAmpersand Character
 hi def link scssNestedProperty Type
 hi def link scssDebug     Debug
