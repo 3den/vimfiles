@@ -68,6 +68,9 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_filepath_completion_use_working_dir=1
 let g:UltiSnipsExpandTrigger="<C-j>"
 
+" Emmet
+let g:use_emmet_complete_tag = 1
+
 " Automatic Commands
 if has("autocmd")
   " Reload VIMRC
