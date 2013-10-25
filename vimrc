@@ -66,6 +66,10 @@ let g:syntastic_quiet_warnings=1
 let g:ycm_complete_in_comments=1
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_filepath_completion_use_working_dir=1
+let g:UltiSnipsExpandTrigger="<C-j>"
+
+" Emmet
+let g:use_emmet_complete_tag = 1
 
 " Automatic Commands
 if has("autocmd")
@@ -97,7 +101,7 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
 nmap - :Ex<CR>
-nmap <leader>v :tabedit $MYVIMRC<CR>
+nmap <leader>V :tabedit $MYVIMRC<CR>
 nmap <leader>a <C-w>v\|:A<CR>
 nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
 nmap <leader>F :tabnew<CR><leader>f
@@ -108,7 +112,11 @@ nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
 nmap <leader>q :q<CR>
 nmap <leader>Q :qa!<CR>
-nmap <leader>c "+p
+
+" Copy & Pastle
+vmap <leader>x "+ygvd
+vmap <leader>c "+y
+map <leader>v "+p
 
 " Toggle Syntastic Errors ON/OFF
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
@@ -139,8 +147,6 @@ imap <C-s> <Esc>:w<CR>
 vmap <C-s> <Esc>:w<CR>
 
 " key mapping for tab indentation
-nmap <Tab> >>
-nmap <S-Tab> <<
 vmap <S-Tab> <gv
 vmap <Tab> >gv
 
