@@ -1,5 +1,6 @@
 " Use Vim settings
 set nocompatible
+set shell=/bin/sh
 
 set rtp+=~/.vim/bundle/vundle/
 source ~/.vim/bundles
@@ -17,6 +18,7 @@ set laststatus=2
 set title hidden number
 set wrap linebreak nolist
 set splitbelow splitright
+set nofoldenable
 
 " Save
 set nobackup       " Don't make a backup before overwriting a file.
@@ -54,6 +56,7 @@ let g:netrw_fastbrowse=0
 let g:netrw_altv=1
 let g:netrw_fastbrowse=2
 let g:netrw_retmap=1
+let g:netrw_rmf_cmd = 'ssh USEPORT HOSTNAME rm -Rf'
 let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)'
 
 " Syntastic

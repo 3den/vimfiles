@@ -20,13 +20,16 @@ syn case ignore
 
 syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn,scssFn
 
+syn region cssStringQQ start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=cssUnicodeEscape,cssSpecialCharQQ,scssInterpolation
+syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEscape,cssSpecialCharQ,scssInterpolation
+
 syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
-" functions from http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+" functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
 syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(hsl\|hsla\|hue\|saturation\|lightness\|adjust-hue\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(lighten\|darken\|saturate\|desaturate\|grayscale\|complement\|invert\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(alpha\|opacity\|opacify\|transparentize\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(alpha\|opacity\|opacify\|fade-in\|transparentize\|fade-out\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(adjust-color\|scale-color\|change-color\|ie-hex-str\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(unquote\|quote\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(percentage\|round\|ceil\|floor\|abs\|min\|max\)\s*(" end=")" oneline keepend
@@ -61,7 +64,7 @@ syn match scssOperator "-" contained
 syn match scssOperator "/" contained
 syn match scssOperator "*" contained
 
-syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssMixin,scssFunction,@scssControl,scssInterpolation,scssNestedProperty
+syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssMixin,scssInclude,scssFunction,@scssControl,scssInterpolation,scssNestedProperty
 syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
 
 syn match scssDebug "@debug"
