@@ -63,7 +63,7 @@ let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 " YouCompleteMe
 let g:ycm_complete_in_comments=1
