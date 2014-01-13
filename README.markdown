@@ -1,9 +1,8 @@
 ###Fresh Install
 
-Make sure to delete your `~/.vim` and `~/.vimrc` before doing this.
+Make sure to delete your `~/.vim` before installing.
 
     git clone https://github.com/3den/vimfiles.git ~/.vim
-    ln -s ~/.vim/vimrc ~/.vimrc
     cd ~/.vim
     make
 
