@@ -13,5 +13,4 @@
 *.[t]gz
 *.[t]bz2
 tmp/
-/bundle/*
-!/bundle/vundle/*
+/bundle/**/*
