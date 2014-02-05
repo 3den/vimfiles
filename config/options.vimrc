@@ -48,13 +48,15 @@ let g:netrw_fastbrowse=2
 let g:netrw_retmap=1
 let g:netrw_localrmdir='rm -r'
 let g:netrw_rmdir_cmd='ssh USEPORT HOSTNAME rm -r'
-let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)'
+let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)|(\.log)'
+let g:ctrlp_root_markers = ['bower_components']
 
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_quiet_messages={'level': 'warnings'}
+let g:syntastic_sass_checkers=[]
 
 " YouCompleteMe
 let g:ycm_complete_in_comments=1
