@@ -30,11 +30,10 @@ map <leader>v "+p
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
-let g:tests="rspec -fd %"
+let g:tests="bundle exec rake test TEST=%"
 command! RunTests :exec "!".g:tests
-map ,t :RunTests<CR>
 map <leader>t :w<CR>\|:RunTests<CR>
-map <leader>T :w<CR>\|:exec "!rspec -fd % -l " . line(".")<CR>
+map <leader>T :w<CR>\|:exec "!bundle exec rspec -fd %:" . line(".")<CR>
 
 " Ctags
 map <F5> :exec "!ctags -R --exclude=.git --exclude=log --exclude=tmp *"<CR>

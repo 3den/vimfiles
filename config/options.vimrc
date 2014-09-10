@@ -46,8 +46,8 @@ let g:netrw_fastbrowse=0
 let g:netrw_altv=1
 let g:netrw_fastbrowse=2
 let g:netrw_retmap=1
-let g:netrw_localrmdir='rm -r'
-let g:netrw_rmdir_cmd='ssh USEPORT HOSTNAME rm -r'
+let g:netrw_localrmdir='rm -ri'
+let g:netrw_rmdir_cmd='ssh USEPORT HOSTNAME rm -ri'
 let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)|(\.log)'
 let g:ctrlp_root_markers = ['bower_components']
 
