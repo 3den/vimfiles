@@ -12,6 +12,7 @@ set title hidden number
 set wrap linebreak nolist
 set splitbelow splitright
 set nofoldenable
+set diffopt+=vertical
 
 " Save
 set nobackup       " Don't make a backup before overwriting a file.
