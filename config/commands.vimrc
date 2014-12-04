@@ -10,6 +10,9 @@ if has("autocmd")
 
   " Auto Complete
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+  " Formats
+  autocmd BufEnter *.json setf json
 endif
 
 " Commands
