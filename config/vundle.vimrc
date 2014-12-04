@@ -23,5 +23,5 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
-
-
+Bundle 'jsx/jsx.vim'
+Bundle 'elzr/vim-json'

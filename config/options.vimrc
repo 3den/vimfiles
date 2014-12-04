@@ -33,7 +33,7 @@ set history=100
 set backspace=indent,eol,start
 
 " Tabs & Indentation
-set tabstop=2 softtabstop=2 shiftwidth=2
+set tabstop=4 softtabstop=4 shiftwidth=4
 set smartindent autoindent expandtab smarttab
 
 "folding settings
