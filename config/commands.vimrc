@@ -13,6 +13,7 @@ if has("autocmd")
 
   " Formats
   autocmd BufEnter *.json setf json
+  autocmd BufEnter *.scss setf scss
 endif
 
 " Commands

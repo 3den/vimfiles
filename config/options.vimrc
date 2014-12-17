@@ -57,13 +57,10 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_messages={'level': 'warnings'}
-let g:syntastic_sass_checkers=[]
-
-" YouCompleteMe
-let g:ycm_complete_in_comments=1
-let g:ycm_collect_identifiers_from_comments_and_strings=1
-let g:ycm_filepath_completion_use_working_dir=1
-let g:UltiSnipsExpandTrigger="<C-j>"
+let g:syntastic_sass_checkers = []
 
 " Emmet
 let g:use_emmet_complete_tag = 1
+
+" Ack
+let g:ack_default_options = ' -s -H --nocolor --nogroup --column --ignore-dir={build,log,tmp}'
