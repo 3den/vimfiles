@@ -31,7 +31,7 @@ nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
 let g:test="mocha %"
-let g:tests="npm run devtest"
+let g:tests="npm run test"
 map <leader>t :w<CR>\|:exec "!".g:test<CR>
 map <leader>T :w<CR>\|:exec "!".g:tests<CR>
 

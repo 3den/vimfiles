@@ -3,16 +3,15 @@ filetype plugin indent on
 colorscheme wombat256
 
 " View Options
-set showbreak=...
-set cursorline
-set vb t_vb=
+set diffopt+=vertical
 set scrolloff=3
 set laststatus=2
-set title hidden number
-set wrap linebreak nolist
-set splitbelow splitright
-set nofoldenable
-set diffopt+=vertical
+set vb t_vb=
+set showbreak=
+set breakindentopt=shift:4
+set title hidden number cursorline
+set wrap linebreak nolist breakindent
+set splitbelow splitright nofoldenable
 
 " Save
 set nobackup       " Don't make a backup before overwriting a file.
@@ -42,25 +41,25 @@ set foldlevel=1
 set nofoldenable
 
 " File Explorer
-let g:netrw_list_hide='^\..*'
-let g:netrw_fastbrowse=0
-let g:netrw_altv=1
-let g:netrw_fastbrowse=2
-let g:netrw_retmap=1
-let g:netrw_localrmdir='rm -ri'
-let g:netrw_rmdir_cmd='ssh USEPORT HOSTNAME rm -ri'
-let g:ctrlp_custom_ignore='\v(\/\.)|(spec\/cassettes)|(\.log)'
-let g:ctrlp_root_markers = ['bower_components']
+let g:netrw_list_hide = '^\..*'
+let g:netrw_fastbrowse = 0
+let g:netrw_altv = 1
+let g:netrw_fastbrowse = 2
+let g:netrw_retmap = 1
+let g:netrw_localrmdir = 'rm -ri'
+let g:netrw_rmdir_cmd = 'ssh USEPORT HOSTNAME rm -ri'
+let g:ctrlp_custom_ignore = '\v(\/\.)|(spec\/cassettes)|(\.log)|(node_modules)'
+let g:ctrlp_root_markers = ['bower_components', 'node_modules']
 
 " Syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_messages={'level': 'warnings'}
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_sass_checkers = []
 
 " Emmet
 let g:use_emmet_complete_tag = 1
 
 " Ack
-let g:ack_default_options = ' -s -H --nocolor --nogroup --column --ignore-dir={build,log,tmp}'
+let g:ack_default_options = ' -s -H --nocolor --nogroup --column --ignore-dir={build,log,tmp,artifacts}'
