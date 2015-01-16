@@ -1,14 +1,16 @@
 syntax on
 filetype plugin indent on
 colorscheme wombat256
+highlight ColorColumn ctermbg=Black guibg=Black
+let &colorcolumn=join(range(120,999),",")
 
 " View Options
 set diffopt+=vertical
 set scrolloff=3
 set laststatus=2
 set vb t_vb=
-set showbreak=
-set breakindentopt=shift:4
+set showbreak=...
+set breakindentopt=shift:1
 set title hidden number cursorline
 set wrap linebreak nolist breakindent
 set splitbelow splitright nofoldenable
