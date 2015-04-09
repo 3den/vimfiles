@@ -32,6 +32,7 @@ nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 " Tests
 let g:test="mocha %"
 let g:tests="npm run test"
+map <leader>j :w<CR>\|:exec "!jasmine %"<CR>
 map <leader>t :w<CR>\|:exec "!".g:test<CR>
 map <leader>T :w<CR>\|:exec "!".g:tests<CR>
 
@@ -59,7 +60,3 @@ vmap <Tab> >gv
 
 " key mappings for selection
 map <Leader>= ggVG=
-
-" autocomplete
-imap <C-Space> <C-n>
-imap <S-C-Space> <C-p>

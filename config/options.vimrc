@@ -2,18 +2,17 @@ syntax on
 filetype plugin indent on
 colorscheme wombat256
 highlight ColorColumn ctermbg=Black guibg=Black
-let &colorcolumn=join(range(120,999),",")
 
 " View Options
+let &colorcolumn=join(range(120,999),",")
+let &showbreak=repeat(' ', 4)
 set diffopt+=vertical
 set scrolloff=3
 set laststatus=2
 set vb t_vb=
-set showbreak=...
-set breakindentopt=shift:1
 set title hidden number cursorline
 set wrap linebreak nolist breakindent
-set splitbelow splitright nofoldenable
+set splitbelow splitright nofoldenable ruler
 
 " Save
 set nobackup       " Don't make a backup before overwriting a file.
@@ -27,7 +26,7 @@ set smartcase
 " Tab completion options
 set showmode showcmd wildmenu
 set wildmode=full
-set complete=.,w,t
+set complete=.,w,b,t
 set history=100
 
 " Intuitive backspacing.

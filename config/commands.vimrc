@@ -1,19 +1,22 @@
 " Automatic Commands
 if has("autocmd")
-  autocmd BufWritePost *vimrc source %
+    set tabstop=4 softtabstop=4 shiftwidth=4
 
-  " Clean Fugitive Buffer
-  autocmd BufReadPost fugitive://* set bufhidden=delete
+    autocmd BufWritePost *vimrc source %
 
-  " Trim white spaces
-  autocmd BufWritePre * :%s/\s\+$//e
+    " Clean Fugitive Buffer
+    autocmd BufReadPost fugitive://* set bufhidden=delete
 
-  " Auto Complete
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+    " Trim white spaces
+    autocmd BufWritePre * :%s/\s\+$//e
 
-  " Formats
-  autocmd BufEnter *.json setf json
-  autocmd BufEnter *.scss setf scss
+    " Auto Complete
+    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+    " Formats
+    autocmd BufEnter *.json setf json
+    autocmd BufEnter *.scss setf scss
+    autocmd BufEnter *.jsx set filetype=jsx
 endif
 
 " Commands
