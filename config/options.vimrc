@@ -1,7 +1,11 @@
 syntax on
 filetype plugin indent on
-colorscheme wombat256
-highlight ColorColumn ctermbg=Black guibg=Black
+" colorscheme wombat256
+" highlight ColorColumn ctermbg=Black guibg=Black
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized
 
 " View Options
 let &colorcolumn=join(range(120,999),",")
@@ -11,7 +15,7 @@ set scrolloff=3
 set laststatus=2
 set vb t_vb=
 set title hidden number cursorline
-set wrap linebreak nolist breakindent
+set wrap linebreak nolist paste
 set splitbelow splitright nofoldenable ruler
 
 " Save
