@@ -30,7 +30,7 @@ map <leader>v "+p
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
-let g:test="mocha %"
+let g:test="rspec %"
 let g:tests="npm run test"
 map <leader>j :w<CR>\|:exec "!jasmine %"<CR>
 map <leader>t :w<CR>\|:exec "!".g:test<CR>

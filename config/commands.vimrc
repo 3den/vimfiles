@@ -1,7 +1,5 @@
 " Automatic Commands
 if has("autocmd")
-    set tabstop=4 softtabstop=4 shiftwidth=4
-
     autocmd BufWritePost *vimrc source %
 
     " Clean Fugitive Buffer
