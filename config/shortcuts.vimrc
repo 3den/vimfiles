@@ -8,7 +8,7 @@ endfunc
 nmap <C-S-P> :call <SID>SynStack()<CR>
 
 " ########### Shortcuts ###############
-nmap - :Ex<CR>
+nmap - :Explore<CR>
 nmap <leader>V :tabedit ~/.vim/config<CR>
 nmap <leader>a <C-w>v\|:A<CR>
 nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
