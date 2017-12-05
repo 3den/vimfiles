@@ -11,9 +11,11 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 nmap - :Explore<CR>
 nmap <leader>V :tabedit ~/.vim/config<CR>
 nmap <leader>a <C-w>v\|:A<CR>
-nmap <leader>f :CtrlPClearAllCache<CR>\|:CtrlP<CR>
+"nmap <leader>f :CtrlP<CR>
+nmap <leader>f :Niffler -vcs<CR>
 nmap <leader>F :tabnew<CR><leader>f
-nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
+"nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
+nmap <leader>b :NifflerBuffer<CR>
 nmap <leader>B :tabnew<CR><leader>b
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
@@ -31,8 +33,7 @@ nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
 let g:test="rspec %"
-let g:tests="npm run test"
-map <leader>j :w<CR>\|:exec "!jasmine %"<CR>
+let g:tests="bin/test-units"
 map <leader>t :w<CR>\|:exec "!".g:test<CR>
 map <leader>T :w<CR>\|:exec "!".g:tests<CR>
 
