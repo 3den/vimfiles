@@ -54,7 +54,7 @@ let g:netrw_localrmdir = 'rm -ri'
 let g:netrw_rmdir_cmd = 'ssh USEPORT HOSTNAME rm -ri'
 let g:ctrlp_custom_ignore = '\v(\/\.)|(spec\/cassettes)|(\.log)|(node_modules)'
 " let g:ctrlp_root_markers = ['bower_components', 'node_modules']
-let g:niffler_ignore_dirs = ['node_modules', 'spec/cassettes', 'tmp', 'log']
+let g:niffler_ignore_dirs = ['node_modules', 'spec/cassettes', 'tmp', 'log', 'vendor']
 let g:niffler_ignore_extensions = ['.log', '.swp', '.swf', '.jpg', '.eot', '.gif', '.png', '.woff', '.woff2', '.ttf', '.svg']
 
 " Syntastic
@@ -68,4 +68,4 @@ let g:syntastic_sass_checkers = []
 let g:use_emmet_complete_tag = 1
 
 " Ack
-let g:ack_default_options = ' -s -H --nocolor --nogroup --column --ignore-dir={build,log,tmp,artifacts}'
+let g:ack_default_options = ' -s -H --nocolor --nogroup --column --ignore-dir={build,dist,log,tmp,artifacts,node_modules,vendor,coverage,db,public} --ignore-file=ext:log'

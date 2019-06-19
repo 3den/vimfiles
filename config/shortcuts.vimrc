@@ -32,8 +32,8 @@ map <leader>v "+p
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
-let g:test="rspec %"
-let g:tests="bin/test-units"
+let g:test="bundle exec rspec %"
+let g:tests="yarn test -- %"
 map <leader>t :w<CR>\|:exec "!".g:test<CR>
 map <leader>T :w<CR>\|:exec "!".g:tests<CR>
 
