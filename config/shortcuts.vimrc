@@ -11,11 +11,10 @@ nmap <C-S-P> :call <SID>SynStack()<CR>
 nmap - :Explore<CR>
 nmap <leader>V :tabedit ~/.vim/config<CR>
 nmap <leader>a <C-w>v\|:A<CR>
-"nmap <leader>f :CtrlP<CR>
-nmap <leader>f :Niffler -vcs<CR>
+nmap <leader>f :CtrlP<CR>
 nmap <leader>F :tabnew<CR><leader>f
 "nmap <leader>b :CtrlPClearAllCache<CR>\|:CtrlPBuffer<CR>
-nmap <leader>b :NifflerBuffer<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>B :tabnew<CR><leader>b
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
 nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J

@@ -52,10 +52,12 @@ let g:netrw_fastbrowse = 2
 let g:netrw_retmap = 1
 let g:netrw_localrmdir = 'rm -ri'
 let g:netrw_rmdir_cmd = 'ssh USEPORT HOSTNAME rm -ri'
-let g:ctrlp_custom_ignore = '\v(\/\.)|(spec\/cassettes)|(\.log)|(node_modules)'
 " let g:ctrlp_root_markers = ['bower_components', 'node_modules']
-let g:niffler_ignore_dirs = ['node_modules', 'spec/cassettes', 'tmp', 'log', 'vendor']
-let g:niffler_ignore_extensions = ['.log', '.swp', '.swf', '.jpg', '.eot', '.gif', '.png', '.woff', '.woff2', '.ttf', '.svg']
+let g:ctrlp_working_path_mod = "ra"
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v(spec\/cassettes)|log|node_modules|vendor|dist|tmp',
+  \ 'file': '\v\.(exe|so|dll|log|jpg|svg|png|gif|swp|swf|ttf|woff|eot)'
+  \ }
 
 " Syntastic
 let g:syntastic_enable_signs = 1
