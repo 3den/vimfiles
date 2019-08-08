@@ -31,8 +31,8 @@ map <leader>v "+p
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
 
 " Tests
-let g:test="bundle exec rspec %"
-let g:tests="yarn test -- %"
+let g:test="npm run test:jest -- --runTestsByPath % --coverage false"
+let g:tests="bb test"
 map <leader>t :w<CR>\|:exec "!".g:test<CR>
 map <leader>T :w<CR>\|:exec "!".g:tests<CR>
 
@@ -50,9 +50,8 @@ map j gj
 map k gk
 
 " key mapping for saving file
-nmap <C-s> :w<CR>
+map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
-vmap <C-s> <Esc>:w<CR>
 
 " key mapping for tab indentation
 vmap <S-Tab> <gv

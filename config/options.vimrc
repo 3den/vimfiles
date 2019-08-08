@@ -52,7 +52,7 @@ let g:netrw_fastbrowse = 2
 let g:netrw_retmap = 1
 let g:netrw_localrmdir = 'rm -ri'
 let g:netrw_rmdir_cmd = 'ssh USEPORT HOSTNAME rm -ri'
-" let g:ctrlp_root_markers = ['bower_components', 'node_modules']
+let g:ctrlp_root_markers = ['src', 'node_modules']
 let g:ctrlp_working_path_mod = "ra"
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v(spec\/cassettes)|log|node_modules|vendor|dist|tmp',
@@ -71,3 +71,4 @@ let g:use_emmet_complete_tag = 1
 
 " Ack
 let g:ack_default_options = ' -s -H --nocolor --nogroup --column --ignore-dir={build,dist,log,tmp,artifacts,node_modules,vendor,coverage,db,public} --ignore-file=ext:log'
+let g:ack_autoclose = 0

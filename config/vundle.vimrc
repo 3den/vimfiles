@@ -3,11 +3,15 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Plugin 'gmarik/vundle'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'mileszs/ack.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'Quramy/tsuquyomi'
 Plugin 'tpope/vim-endwise'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
