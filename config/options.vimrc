@@ -59,13 +59,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|log|jpg|svg|png|gif|swp|swf|ttf|woff|eot)'
   \ }
 
-" Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_jump = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_sass_checkers = []
-
 " Emmet
 let g:use_emmet_complete_tag = 1
 
