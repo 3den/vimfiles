@@ -7,3 +7,4 @@ source ~/.vim/config/vundle.vimrc
 source ~/.vim/config/options.vimrc
 source ~/.vim/config/commands.vimrc
 source ~/.vim/config/shortcuts.vimrc
+source ~/.vim/config/lsp.vimrc
