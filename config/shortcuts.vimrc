@@ -23,9 +23,8 @@ nmap <leader>q :q<CR>
 nmap <leader>Q :qa!<CR>
 
 " Copy & Pastle
-vmap <leader>x "+ygvd
-vmap <leader>c "+y
-map <leader>v "+p
+vmap <leader>p !pbpaste<CR>
+vmap <leader>y !pbcopy<CR>u
 
 " Toggle Syntastic Errors ON/OFF
 nmap <leader>e :SyntasticToggleMode<CR>\|:w<CR>
@@ -52,12 +51,6 @@ map k gk
 " key mapping for saving file
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
-
-" Autocomplete
-imap <c-space> <Plug>(asyncomplete_force_refresh)
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 " key mapping for tab indentation
 vmap <S-Tab> <gv

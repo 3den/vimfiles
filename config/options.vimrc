@@ -15,6 +15,7 @@ set vb t_vb=
 set title hidden number cursorline
 set wrap linebreak nolist breakindent showbreak=..
 set splitbelow splitright nofoldenable ruler
+set clipboard=unnamed
 
 " Save
 set nobackup       " Don't make a backup before overwriting a file.
