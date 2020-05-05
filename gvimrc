@@ -1,5 +1,5 @@
 " Transparent Window
-set transparency=20
+set transparency=10
 
 " No toolbar
 set guioptions-=T
