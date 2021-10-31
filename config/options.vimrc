@@ -8,7 +8,7 @@ highlight ColorColumn ctermbg=Black guibg=Black
 
 " View Options
 let &colorcolumn=join(range(120,999),",")
-set diffopt+=vertical
+" set diffopt+=vertical
 set scrolloff=3
 set laststatus=2
 set vb t_vb=
