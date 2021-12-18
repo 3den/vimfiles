@@ -17,7 +17,7 @@ nmap <leader>F :tabnew<CR><leader>f
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>B :tabnew<CR><leader>b
 nmap <leader>o :only<CR>\|:set nofoldenable<CR>
-nmap <leader>g :only<CR>\|:Gstatus<CR>\|<C-w>J
+nmap <leader>g :only<CR>\|:Git<CR>\|<C-w>J
 nmap <leader>A :only<CR>\|:set nofoldenable<CR>\|:vsplit<CR>\|<C-w>l\|:A<CR>
 nmap <leader>q :q<CR>
 nmap <leader>Q :qa!<CR>
