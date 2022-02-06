@@ -5,10 +5,6 @@ if has("autocmd")
     " Clean Fugitive Buffer
     autocmd BufReadPost fugitive://* set bufhidden=delete
 
-    " Trim white spaces
-    autocmd BufWritePre * :%s/\s\+$//e
-    autocmd BufWritePre * :retab
-
     " Auto Complete
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
@@ -17,7 +13,11 @@ if has("autocmd")
     autocmd BufEnter *.scss setf scss
     autocmd BufEnter *.jsx set filetype=jsx
     autocmd BufEnter *.es6 set filetype=js
-    autocmd BufEnter * set expandtab smartindent smarttab autoindent
+    autocmd FileType make set noexpandtab
+
+    " Trim white spaces retab
+    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * :retab
 endif
 
 " Commands
